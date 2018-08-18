@@ -7,7 +7,13 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 5432, host:5432
   config.vm.network "forwarded_port", guest: 3306, host: 3306
 
-  config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network "private_network", ip: "192.168.33.22"
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "provisioning/site.yml"
+    ansible.inventory_path = "provisioning/hosts"
+    ansible.limit = "all"
+  end
 
   config.vm.provider "virtualbox" do |vb|
     vb.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
