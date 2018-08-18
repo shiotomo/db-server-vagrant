@@ -8,7 +8,7 @@
   - 共有フォルダの作成はしない(wsl用)
 
 ## 注意点
-- vm内にPythonをインストールしないと利用できないので`vagrant ssh`後にpythonをインストールする
+- vm内にPythonをインストールしないとAnsibleを利用できないので`vagrant ssh`後にpythonをインストールする
 ```
 sudo apt-get install python-minimal -y
 ```
