@@ -10,14 +10,15 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network", ip: "192.168.33.22"
 
   config.vm.provision "ansible" do |ansible|
-    ansible.inventory_path = "settings/hosts"
     ansible.playbook = "playbook/site.yml"
     ansible.playbook = "playbook/database.yml"
+    ansible.inventory_path = "settings/hosts"
     ansible.limit = "all"
   end
 
   config.vm.provider "virtualbox" do |vb|
     vb.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
   end
+
   config.vm.synced_folder ".", "/vagrant", disabled: true
 end
