@@ -3,11 +3,15 @@
   sudo: true
   user: vagrant
   tasks:
-    - name: install packages PostgreSQL
-      apt: name=postgresql update_cache=yes
-
-    - name: install packages MySQL server
-      apt: name=mysql-server update_cache=yes
-
-    - name: install packages MySQL client
-      apt: name=mysql-client update_cache=yes
+    - name: install packages
+      apt: name={{item}} update_cache=yes
+      with_items:
+        - postgresql
+        - libpq-dev
+        - mysql-server
+        - mysql-client
+        - zsh
+        - vim
+        - htop
+        - python3
+        - ruby
