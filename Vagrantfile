@@ -4,8 +4,8 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu"
   config.vm.hostname = 'carmy'
-  config.vm.network "forwarded_port", guest: 5432, host:5432
-  config.vm.network "forwarded_port", guest: 3306, host: 3306
+  config.vm.network "forwarded_port", guest: 5432, host:54321
+  config.vm.network "forwarded_port", guest: 3306, host: 33061
 
   config.vm.network "private_network", ip: "192.168.33.22"
 
